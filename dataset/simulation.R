@@ -13,7 +13,7 @@ for(count in 1:30000)
 {
     #generate 30 random characters and append (a.k.a paste) it to background_string
     background_string <- ""
-    for(i in 1:30)
+    for(i in 1:190)
     {
         c <- sample(x, size, replace, prob)
         background_string <- paste(background_string,c)
@@ -30,12 +30,12 @@ for(count in 1:30000)
     final_string <- ""
 
     #randomly generated index where motif has to be inserted
-    insert_index <- sample(1:30, 1, replace=TRUE)
+    insert_index <- sample(1:190, 1, replace=TRUE)
     cat("Index generated is: ",insert_index,"\n")
     
     
     #substring function used to insert motif
-    final_string <- paste(substr(background_string,0,insert_index-1), motif , substr(background_string,insert_index,30))
+    final_string <- paste(substr(background_string,0,insert_index-1), motif , substr(background_string,insert_index,190))
     final_string <- str_replace_all(string=final_string, pattern=" ", repl="")
     
     cat("Final String is: ",final_string,"\n")
@@ -51,7 +51,7 @@ for(count in 1:30000)
 {
     #generate 34 random characters and append (a.k.a paste) it to background_string
     background_string <- ""
-    for(i in 1:40)
+    for(i in 1:200)
     {
       c <- sample(x, size, replace, prob)
       background_string <- paste(background_string,c)
