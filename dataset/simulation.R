@@ -5,7 +5,7 @@ x <- c('A','C','T','G')
 n <- 4
 size <- 1
 replace <- TRUE
-prob <- c(0.25,0.25,0.25,0.25)
+prob <- c(0.23,0.27,0.23,0.27)
 
 
 #generate 20 sequences with label 1 
@@ -13,7 +13,7 @@ for(count in 1:30000)
 {
     #generate 30 random characters and append (a.k.a paste) it to background_string
     background_string <- ""
-    for(i in 1:190)
+    for(i in 1:90)
     {
         c <- sample(x, size, replace, prob)
         background_string <- paste(background_string,c)
@@ -30,12 +30,12 @@ for(count in 1:30000)
     final_string <- ""
 
     #randomly generated index where motif has to be inserted
-    insert_index <- sample(1:190, 1, replace=TRUE)
+    insert_index <- sample(1:90, 1, replace=TRUE)
     cat("Index generated is: ",insert_index,"\n")
     
     
     #substring function used to insert motif
-    final_string <- paste(substr(background_string,0,insert_index-1), motif , substr(background_string,insert_index,190))
+    final_string <- paste(substr(background_string,0,insert_index-1), motif , substr(background_string,insert_index,90))
     final_string <- str_replace_all(string=final_string, pattern=" ", repl="")
     
     cat("Final String is: ",final_string,"\n")
@@ -43,7 +43,7 @@ for(count in 1:30000)
     
     #writing sequence and class label to csv file
     df <- data.frame(sequence=final_string, label="1")
-    write.table(df, file="/home/abhinav/Documents/dataset/data.csv", sep=",", row.names=FALSE, col.names=FALSE, append=TRUE)
+    write.table(df, file="/home/samridhi/boatgang/dataset/data.csv", sep=",", row.names=FALSE, col.names=FALSE, append=TRUE)
 }
 
 #generate 20 sequences with label 0
@@ -51,7 +51,7 @@ for(count in 1:30000)
 {
     #generate 34 random characters and append (a.k.a paste) it to background_string
     background_string <- ""
-    for(i in 1:200)
+    for(i in 1:100)
     {
       c <- sample(x, size, replace, prob)
       background_string <- paste(background_string,c)
@@ -62,5 +62,5 @@ for(count in 1:30000)
     
     #write the sequence + label to the csv file
     df <- data.frame(sequence=background_string, label="0")
-    write.table(df, file="/home/abhinav/Documents/dataset/data.csv", sep = ",",row.names=FALSE, col.names=FALSE, append=TRUE)
+    write.table(df, file="/home/samridhi/boatgang/dataset/data.csv", sep = ",",row.names=FALSE, col.names=FALSE, append=TRUE)
 }
